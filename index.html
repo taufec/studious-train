@@ -8,18 +8,56 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #0a0b0d; /* Warna latar belakang gelap */
+            color: #c0c0c0; /* Warna teks terang */
         }
 
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 40px;
         }
 
         .slider {
+            -webkit-appearance: none; /* Menghilangkan gaya bawaan */
+            appearance: none;
             width: 80%; /* Lebar slider */
+            height: 15px;
+            background: #333; /* Warna latar slider */
+            outline: none;
+            opacity: 0.7; /* Sedikit transparan */
+            -webkit-transition: .2s; /* Animasi transisi untuk Chrome */
+            transition: opacity .2s;
             margin: 10px 0;
+        }
+
+        .slider:hover {
+            opacity: 1; /* Ketika dihover, kurang transparan */
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Menghilangkan gaya bawaan untuk Chrome */
+            appearance: none;
+            width: 25px; /* Lebar pegangan slider */
+            height: 25px;
+            background: #ff4500; /* Warna pegangan slider */
+            cursor: pointer; /* Cursor tangan ketika dihover */
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px; /* Lebar pegangan slider untuk Firefox */
+            height: 25px;
+            background: #ff4500; /* Warna pegangan slider */
+            cursor: pointer;
+        }
+
+        h2 {
+            font-size: 32px; /* Saiz font untuk tajuk */
+            color: #ffffff;
+            margin-bottom: 30px;
         }
 
         .center-text {
@@ -27,23 +65,19 @@
             width: 100%;
         }
 
-        h2 {
-            font-size: 24px; /* Saiz font untuk tajuk */
-        }
-
         @media (max-width: 600px) {
             body {
                 font-size: 18px !important; /* Saiz font yang lebih besar untuk mobile */
             }
             .slider {
-                width: 100%; /* Slider lebih lebar untuk mobile */
+                width: 90%; /* Slider lebih lebar untuk mobile */
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Laju Nak Pi Mana?</h2> <!-- Tajuk yang diubah -->
+        <h2>Laju Nak Pi Mana?</h2>
         <label for="speedBefore">Kelajuan Sebelum:</label>
         <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
         <span id="speedBeforeValue">80</span> km/j
@@ -58,7 +92,7 @@
             <p>Untuk setiap 100km perjalanan</p>
         </div>
     </div>
-
+    
     <script>
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
