@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,44 +8,69 @@
             margin: 20px;
         }
 
-        input[type=range] {
-            width: 300px;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .slider {
+            width: 80%; /* Lebar slider */
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: row;
+            }
+            .column {
+                flex: 1;
+            }
+            .main-column {
+                flex: 3;
+            }
         }
     </style>
 </head>
 <body>
-    <h2>Kalkulator Penjimatan Masa Perjalanan</h2>
-    <label for="speedBefore">Kelajuan Sebelum (km/j):</label>
-    <input type="range" id="speedBefore" min="10" max="200" value="80" oninput="calculateTime()">
-    <span id="speedBeforeValue">80</span> km/j
-    <br><br>
-    <label for="speedAfter">Kelajuan Selepas (km/j):</label>
-    <input type="range" id="speedAfter" min="10" max="200" value="130" oninput="calculateTime()">
-    <span id="speedAfterValue">130</span> km/j
-    <br><br>
-    <p>Masa Dijimatkan: <span id="timeSaved"></span> jam</p>
+    <div class="container">
+        <div class="column"></div> <!-- Kolom kiri -->
+        <div class="main-column">
+            <h2>Kalkulator Penjimatan Masa Perjalanan</h2>
+            <label for="speedBefore">Kelajuan Sebelum (km/j):</label>
+            <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
+            <span id="speedBeforeValue">80</span> km/j
+            <br><br>
+            <label for="speedAfter">Kelajuan Selepas (km/j):</label>
+            <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
+            <span id="speedAfterValue">130</span> km/j
+            <br><br>
+            <p>Masa Dijimatkan: <span id="timeSaved"></span> jam</p>
+        </div>
+        <div class="column"></div> <!-- Kolom kanan -->
+    </div>
 
     <script>
         function calculateTime() {
-    var speedBefore = document.getElementById("speedBefore").value;
-    var speedAfter = document.getElementById("speedAfter").value;
-    var distance = 100; // Jarak baseline 100 km
+            var speedBefore = document.getElementById("speedBefore").value;
+            var speedAfter = document.getElementById("speedAfter").value;
+            var distance = 100; // Jarak baseline 100 km
 
-    var timeBefore = distance / speedBefore;
-    var timeAfter = distance / speedAfter;
-    var timeSaved = timeBefore - timeAfter;
+            var timeBefore = distance / speedBefore;
+            var timeAfter = distance / speedAfter;
+            var timeSaved = timeBefore - timeAfter;
 
-    // Mengubah waktu dari jam ke jam dan minit
-    var jam = Math.floor(timeSaved);
-    var minit = Math.round((timeSaved - jam) * 60);
+            // Mengubah waktu dari jam ke jam dan minit
+            var jam = Math.floor(timeSaved);
+            var minit = Math.round((timeSaved - jam) * 60);
 
-    document.getElementById("speedBeforeValue").textContent = speedBefore;
-    document.getElementById("speedAfterValue").textContent = speedAfter;
-    document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
-}
+            document.getElementById("speedBeforeValue").textContent = speedBefore;
+            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+        }
 
-// Panggil fungsi ini sekali untuk mengemaskini UI pada permulaan
-calculateTime();
+        // Panggil fungsi ini sekali untuk mengemaskini UI pada permulaan
+        calculateTime();
     </script>
 </body>
 </html>
