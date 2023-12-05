@@ -23,16 +23,13 @@
 
         @media (max-width: 600px) {
             body {
-                font-size: 18px; /* Saiz font yang lebih besar untuk mobile */
+                font-size: 20px; /* Saiz font yang lebih besar untuk mobile */
             }
             .container {
-                flex-direction: row;
+                flex-direction: column; /* Perubahan untuk memastikan layout tetap konsisten */
             }
-            .column {
-                flex: 1;
-            }
-            .main-column {
-                flex: 3;
+            .slider {
+                width: 100%; /* Slider lebih lebar untuk mobile */
             }
         }
     </style>
