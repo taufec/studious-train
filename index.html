@@ -10,8 +10,9 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0a0b0d; /* Warna latar belakang gelap */
-            color: #c0c0c0; /* Warna teks terang */
+            background: linear-gradient(135deg, #3a3b3c 0%, #181818 100%);
+            color: #c0c0c0;
+            transition: background-color 0.3s;
         }
 
         .container {
@@ -22,40 +23,39 @@
         }
 
         .slider {
-            -webkit-appearance: none; /* Menghilangkan gaya bawaan */
+            -webkit-appearance: none;
             appearance: none;
-            width: 80%; /* Lebar slider */
+            width: 80%;
             height: 15px;
-            background: #333; /* Warna latar slider */
+            background: #333;
             outline: none;
-            opacity: 0.7; /* Sedikit transparan */
-            -webkit-transition: .2s; /* Animasi transisi untuk Chrome */
+            opacity: 0.7;
+            -webkit-transition: .2s;
             transition: opacity .2s;
             margin: 10px 0;
         }
 
         .slider:hover {
-            opacity: 1; /* Ketika dihover, kurang transparan */
+            opacity: 1;
         }
 
         .slider::-webkit-slider-thumb {
-            -webkit-appearance: none; /* Menghilangkan gaya bawaan untuk Chrome */
-            appearance: none;
-            width: 25px; /* Lebar pegangan slider */
+            -webkit-appearance: none;
+            width: 25px;
             height: 25px;
-            background: #ff4500; /* Warna pegangan slider */
-            cursor: pointer; /* Cursor tangan ketika dihover */
+            background: #ff4500;
+            cursor: pointer;
         }
 
         .slider::-moz-range-thumb {
-            width: 25px; /* Lebar pegangan slider untuk Firefox */
+            width: 25px;
             height: 25px;
-            background: #ff4500; /* Warna pegangan slider */
+            background: #ff4500;
             cursor: pointer;
         }
 
         h2 {
-            font-size: 32px; /* Saiz font untuk tajuk */
+            font-size: 32px;
             color: #ffffff;
             margin-bottom: 30px;
         }
@@ -65,12 +65,17 @@
             width: 100%;
         }
 
+        .value-label {
+            display: inline-block;
+            width: 50px;
+        }
+
         @media (max-width: 600px) {
             body {
-                font-size: 18px !important; /* Saiz font yang lebih besar untuk mobile */
+                font-size: 18px !important;
             }
             .slider {
-                width: 90%; /* Slider lebih lebar untuk mobile */
+                width: 100%;
             }
         }
     </style>
@@ -78,41 +83,50 @@
 <body>
     <div class="container">
         <h2>Laju Nak Pi Mana?</h2>
-        <label for="speedBefore">Kelajuan Sebelum:</label>
-        <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
-        <span id="speedBeforeValue">80</span> km/j
-        <br><br>
-        <label for="speedAfter">Kelajuan Selepas:</label>
-        <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
-        <span id="speedAfterValue">130</span> km/j
-        <br><br>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <label for="speedBefore">Kelajuan Sebelum:</label>
+            <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
+            <span id="speedBeforeValue" class="value-label">80</span> km/j
+        </div>
+        <br>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <label for="speedAfter">Kelajuan Selepas:</label>
+            <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
+            <span id="speedAfterValue" class="value-label">130</span> km/j
+        </div>
         <div class="center-text">
             <p>Masa yang kononnya berjaya dijimatkan:</p>
             <p><span id="timeSaved"></span></p>
             <p>Untuk setiap 100km perjalanan</p>
         </div>
     </div>
-    
     <script>
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
-            var distance = 100; // Jarak baseline 100 km
+            var distance = 100; 
 
             var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
             var timeSaved = timeBefore - timeAfter;
 
-            // Mengubah waktu dari jam ke jam dan minit
             var jam = Math.floor(timeSaved);
             var minit = Math.round((timeSaved - jam) * 60);
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("speedBeforeValue").textContent = speedBefore + ' km/j';
+            document.getElementById("speedAfterValue").textContent = speedAfter + ' km/j';
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
         }
 
-        // Panggil fungsi ini sekali untuk mengemaskini UI pada permulaan
+        function updateBackgroundColor(value) {
+            const colorValue = Math.round((value - 10) / (200 - 10) * 255);
+            document.body.style.background = `linear-gradient(135deg, rgb(${colorValue}, 64, 255) 0%, #181818 100%)`;
+        }
+
+        document.getElementById('speedAfter').addEventListener('input', function(e) {
+            updateBackgroundColor(e.target.value);
+        });
+
         calculateTime();
     </script>
 </body>
