@@ -22,6 +22,11 @@
             margin: 10px 0;
         }
 
+        .center-text {
+            text-align: center;
+            width: 100%;
+        }
+
         h2 {
             font-size: 24px; /* Saiz font untuk tajuk */
         }
@@ -47,9 +52,11 @@
         <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
         <span id="speedAfterValue">130</span> km/j
         <br><br>
-        <p>Masa yang kononnya berjaya dijimatkan:</p>
-        <p> <span id="timeSaved"></span> </p>
-
+        <div class="center-text">
+            <p>Masa yang kononnya berjaya dijimatkan:</p>
+            <p><span id="timeSaved"></span></p>
+            <p>Untuk setiap 100km perjalanan</p>
+        </div>
     </div>
 
     <script>
@@ -66,8 +73,8 @@
             var jam = Math.floor(timeSaved);
             var minit = Math.round((timeSaved - jam) * 60);
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("speedBeforeValue").textContent = speedBefore + ' km/j';
+            document.getElementById("speedAfterValue").textContent = speedAfter + ' km/j';
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
         }
 
