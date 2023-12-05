@@ -3,8 +3,10 @@
 <head>
     <title>Kalkulator Penjimatan Masa</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             margin: 20px;
         }
 
@@ -20,6 +22,9 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                font-size: 18px; /* Saiz font yang lebih besar untuk mobile */
+            }
             .container {
                 flex-direction: row;
             }
@@ -36,7 +41,7 @@
     <div class="container">
         <div class="column"></div> <!-- Kolom kiri -->
         <div class="main-column">
-            <h2>Kalkulator Penjimatan Masa Perjalanan</h2>
+            <h2>Laju Nak Pi Mana?</h2> <!-- Tajuk yang diubah -->
             <label for="speedBefore">Kelajuan Sebelum (km/j):</label>
             <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
             <span id="speedBeforeValue">80</span> km/j
