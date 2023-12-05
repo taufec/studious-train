@@ -28,21 +28,23 @@
 
     <script>
         function calculateTime() {
-            var speedBefore = document.getElementById("speedBefore").value;
-            var speedAfter = document.getElementById("speedAfter").value;
-            var distance = 100; // Jarak baseline 100 km
+    var speedBefore = document.getElementById("speedBefore").value;
+    var speedAfter = document.getElementById("speedAfter").value;
+    var distance = 100; // Jarak baseline 100 km
 
-            var timeBefore = distance / speedBefore;
-            var timeAfter = distance / speedAfter;
-            var timeSaved = timeBefore - timeAfter;
+    var timeBefore = distance / speedBefore; // Dalam jam
+    var timeAfter = distance / speedAfter; // Dalam jam
+    var timeSaved = timeBefore - timeAfter; // Dalam jam
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
-            document.getElementById("timeSaved").textContent = timeSaved.toFixed(2);
-        }
+    // Mengubah waktu dari jam ke jam dan minit
+    var jam = Math.floor(timeSaved);
+    var minit = Math.round((timeSaved - jam) * 60);
 
-        // Panggil fungsi ini sekali untuk mengemaskini UI pada permulaan
-        calculateTime();
+    document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+}
+
+// Panggil fungsi ini sekali untuk mengemaskini UI pada permulaan
+calculateTime();
     </script>
 </body>
 </html>
