@@ -78,38 +78,27 @@
         /* Tambahkan CSS untuk tata letak kolom */
         .column-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .column-20 {
-            width: 20%;
-        }
-        .column-60 {
-            width: 60%;
-        }
-        .column-20:last-child {
-            margin-right: 0;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
 <body>
     <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
     <div class="container">
-        <h2>Laju Nak Pi Mana?</h2>
         <div class="column-container">
-            <div class="column-20">
+            <h2>Laju Nak Pi Mana?</h2>
+            <div class="box">
                 <label for="speedBefore">Kelajuan Sebelum:</label>
                 <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
                 <div class="speed-display"><span id="speedBeforeValue">80</span> km/j</div>
             </div>
-            <div class="column-60">
-                <div class="box">
-                    <label for="speedAfter">Kelajuan Selepas:</label>
-                    <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
-                    <div class="speed-display"><span id="speedAfterValue">130</span> km/j</div>
-                </div>
+            <div class="box">
+                <label for="speedAfter">Kelajuan Selepas:</label>
+                <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
+                <div class="speed-display"><span id="speedAfterValue">130</span> km/j</div>
             </div>
-            <div class="column-20">
+            <div class="box">
                 <div class="center-text">
                     <p>Masa yang kononnya berjaya dijimatkan:</p>
                     <p><span id="timeSaved"></span></p>
