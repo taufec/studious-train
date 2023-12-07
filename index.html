@@ -162,6 +162,7 @@
                     </div>
                 </div>
                 <p>Untuk setiap 100km perjalanan</p>
+                <p><span id="timeSaved"></span></p> <!-- Menampilkan waktu aktual di sini -->
             </div>
         </div>
     </div>
@@ -178,6 +179,17 @@
             document.getElementById("speedBeforeValue").textContent = speedBefore;
             document.getElementById("speedAfterValue").textContent = speedAfter;
             setFlipClockValue(jam, minit);
+            
+            // Tambahkan kode untuk pembaruan waktu secara real-time
+            var currentTime = new Date();
+            currentTime.setHours(currentTime.getHours() + jam);
+            currentTime.setMinutes(currentTime.getMinutes() + minit);
+            
+            // Format waktu ke format hh:mm
+            var formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" + currentTime.getMinutes().toString().padStart(2, '0');
+            
+            // Tampilkan waktu aktual
+            document.getElementById("timeSaved").textContent = formattedTime;
         }
 
         function setFlipClockValue(jam, minit) {
