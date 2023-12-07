@@ -69,36 +69,25 @@
             text-align: center;
             width: 100%;
         }
-        /* Tambahkan CSS untuk gambar header */
-        .header-image {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
         /* Tambahkan CSS untuk tata letak kolom */
         .column-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-
-        /* Atur ulang ukuran gambar header untuk layar seluler */
-        @media (max-width: 768px) {
-            .header-image {
-                width: 100%;
-                height: auto;
-                max-width: 100%;
-            }
+        /* Tambahkan CSS untuk gambar header */
+        .header-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
         <div class="column-container">
+            <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
+            <h2>Laju Nak Pi Mana?</h2>
             <div class="box">
                 <label for="speedBefore">Kelajuan Sebelum:</label>
                 <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
