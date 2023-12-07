@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%;">
 <head>
     <title>Kalkulator Penjimatan Masa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-         body {
-            font-family: 'Montserrat', sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
-            background-image: url('https://raw.githubusercontent.com/taufec/studious-train/e9a53dfac1280cffbac8f99487aaa4b83c768440/smaller-2023-12-07T04_21_20.545Z.jpeg'); /* Gantikan dengan URL sebenar gambar */
-            background-size: stretch;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('https://raw.githubusercontent.com/taufec/studious-train/e9a53dfac1280cffbac8f99487aaa4b83c768440/smaller-2023-12-07T04_21_20.545Z.jpeg');
+            background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            color: #c0c0c0; /* Warna teks terang */
+            color: #c0c0c0;
         }
 
         .container {
@@ -25,40 +29,40 @@
         }
 
         .slider {
-            -webkit-appearance: none; /* Menghilangkan gaya bawaan */
+            -webkit-appearance: none;
             appearance: none;
-            width: 80%; /* Lebar slider */
+            width: 80%;
             height: 15px;
-            background: #333; /* Warna latar slider */
+            background: #333;
             outline: none;
-            opacity: 0.7; /* Sedikit transparan */
-            -webkit-transition: .2s; /* Animasi transisi untuk Chrome */
+            opacity: 0.7;
+            -webkit-transition: .2s;
             transition: opacity .2s;
             margin: 10px 0;
         }
 
         .slider:hover {
-            opacity: 1; /* Ketika dihover, kurang transparan */
+            opacity: 1;
         }
 
         .slider::-webkit-slider-thumb {
-            -webkit-appearance: none; /* Menghilangkan gaya bawaan untuk Chrome */
+            -webkit-appearance: none;
             appearance: none;
-            width: 25px; /* Lebar pegangan slider */
+            width: 25px;
             height: 25px;
-            background: #ff4500; /* Warna pegangan slider */
-            cursor: pointer; /* Cursor tangan ketika dihover */
+            background: #ff4500;
+            cursor: pointer;
         }
 
         .slider::-moz-range-thumb {
-            width: 25px; /* Lebar pegangan slider untuk Firefox */
+            width: 25px;
             height: 25px;
-            background: #ff4500; /* Warna pegangan slider */
+            background: #ff4500;
             cursor: pointer;
         }
 
         h2 {
-            font-size: 32px; /* Saiz font untuk tajuk */
+            font-size: 32px;
             color: #ffffff;
             margin-bottom: 30px;
         }
@@ -70,10 +74,10 @@
 
         @media (max-width: 600px) {
             body {
-                font-size: 18px !important; /* Saiz font yang lebih besar untuk mobile */
+                font-size: 18px !important;
             }
             .slider {
-                width: 90%; /* Slider lebih lebar untuk mobile */
+                width: 90%;
             }
         }
     </style>
@@ -100,23 +104,21 @@
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
-            var distance = 100; // Jarak baseline 100 km
+            var distance = 100; 
 
             var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
             var timeSaved = timeBefore - timeAfter;
 
-            // Mengubah waktu dari jam ke jam dan minit
             var jam = Math.floor(timeSaved);
             var minit = Math.round((timeSaved - jam) * 60);
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("speedBeforeValue").textContent = speedBefore + ' km/j';
+            document.getElementById("speedAfterValue").textContent = speedAfter + ' km/j';
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
         }
 
-        // Panggil fungsi ini sekali untuk mengemaskini UI pada permulaan
-        calculateTime();
+        calculateTime(); // Memanggil fungsi ini sekali untuk mengemaskini UI pada permulaan
     </script>
 </body>
 </html>
