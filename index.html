@@ -2,7 +2,7 @@
 <html style="height: 100%;">
 <head>
     <title>Kalkulator Penjimatan Masa</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
@@ -21,7 +21,6 @@
             background-position: center center;
             background-repeat: no-repeat;
             color: #c0c0c0;
-           padding-top: env(safe-area-inset-top);
 
 
         }
@@ -106,10 +105,7 @@
     </div>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-        var safeAreaInsetTop = getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-top');
-        document.body.style.paddingTop = safeAreaInsetTop;
-    });
+       
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
