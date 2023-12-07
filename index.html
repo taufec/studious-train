@@ -167,46 +167,46 @@
         </div>
     </div>
     <script>
-        function calculateTime() {
-            var speedBefore = document.getElementById("speedBefore").value;
-            var speedAfter = document.getElementById("speedAfter").value;
-            var distance = 100;
-            var timeBefore = distance / speedBefore;
-            var timeAfter = distance / speedAfter;
-            var timeSaved = timeBefore - timeAfter;
-            var jam = Math.floor(timeSaved);
-            var minit = Math.round((timeSaved - jam) * 60);
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
-            setFlipClockValue(jam, minit);
-            
-            // Tambahkan kode untuk pembaruan waktu secara real-time
-            var currentTime = new Date();
-            currentTime.setHours(currentTime.getHours() + jam);
-            currentTime.setMinutes(currentTime.getMinutes() + minit);
-            
-            // Format waktu ke format hh:mm
-            var formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" + currentTime.getMinutes().toString().padStart(2, '0');
-            
-            // Tampilkan waktu aktual
-            document.getElementById("timeSaved").textContent = formattedTime;
-        }
+    function calculateTime() {
+        var speedBefore = document.getElementById("speedBefore").value;
+        var speedAfter = document.getElementById("speedAfter").value;
+        var distance = 100;
+        var timeBefore = distance / speedBefore;
+        var timeAfter = distance / speedAfter;
+        var timeSaved = timeBefore - timeAfter;
+        var jam = Math.floor(timeSaved);
+        var minit = Math.round((timeSaved - jam) * 60);
+        document.getElementById("speedBeforeValue").textContent = speedBefore;
+        document.getElementById("speedAfterValue").textContent = speedAfter;
+        setFlipClockValue(jam, minit);
 
-        function setFlipClockValue(jam, minit) {
-            var flipClock = document.getElementById("flip-clock");
-            var flipClockCards = flipClock.querySelectorAll(".flip-clock-card");
-            setCardValue(flipClockCards[0], Math.floor(jam / 10));
-            setCardValue(flipClockCards[1], jam % 10);
-            setCardValue(flipClockCards[3], Math.floor(minit / 10));
-            setCardValue(flipClockCards[4], minit % 10);
-        }
+        // Tambahkan kode untuk pembaruan waktu secara real-time
+        var currentTime = new Date();
+        currentTime.setHours(currentTime.getHours() + jam);
+        currentTime.setMinutes(currentTime.getMinutes() + minit);
 
-        function setCardValue(card, value) {
-            card.dataset.value = value;
-            card.style.transform = `rotateX(${value * -36}deg)`;
-        }
+        // Format waktu ke format hh:mm
+        var formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" + currentTime.getMinutes().toString().padStart(2, '0');
 
-        calculateTime();
-    </script>
+        // Tampilkan waktu aktual
+        document.getElementById("timeSaved").textContent = formattedTime;
+    }
+
+    function setFlipClockValue(jam, minit) {
+        var flipClock = document.getElementById("flip-clock");
+        var flipClockCards = flipClock.querySelectorAll(".flip-clock-card");
+        setCardValue(flipClockCards[0], Math.floor(jam / 10));
+        setCardValue(flipClockCards[1], jam % 10);
+        setCardValue(flipClockCards[3], Math.floor(minit / 10));
+        setCardValue(flipClockCards[4], minit % 10);
+    }
+
+    function setCardValue(card, value) {
+        card.dataset.value = value;
+        card.style.transform = `rotateX(${value * -36}deg)`;
+    }
+
+    calculateTime();
+</script>
 </body>
 </html>
