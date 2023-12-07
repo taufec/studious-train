@@ -123,11 +123,21 @@
             font-size: 36px;
             margin: 0 5px;
         }
+        
+        /* Tambahkan CSS untuk header image */
+        .header-image {
+            width: 100%;
+            max-width: 600px; /* Sesuaikan dengan lebar gambar */
+            height: auto;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Laju Nak Pi Mana?</h2>
+        <!-- Tambahkan header image di sini -->
+        <img class="header-image" src="https://github.com/taufec/studious-train/blob/main/Unknown.png" alt="Header Image">
+        <h2>Laju Nak Pi Mana? 🚗</h2>
         <div class="box">
             <label for="speedBefore">Kelajuan Sebelum:</label>
             <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
@@ -171,47 +181,46 @@
             </div>
         </div>
     </div>
- <script>
-    function calculateTime() {
-        var speedBefore = document.getElementById("speedBefore").value;
-        var speedAfter = document.getElementById("speedAfter").value;
-        var distance = 100;
-        var timeBefore = distance / speedBefore;
-        var timeAfter = distance / speedAfter;
-        var timeSaved = timeBefore - timeAfter;
-        var jam = Math.floor(timeSaved);
-        var minit = Math.round((timeSaved - jam) * 60);
-        document.getElementById("speedBeforeValue").textContent = speedBefore;
-        document.getElementById("speedAfterValue").textContent = speedAfter;
-        setFlipClockValue(jam, minit);
+    <script>
+        function calculateTime() {
+            var speedBefore = document.getElementById("speedBefore").value;
+            var speedAfter = document.getElementById("speedAfter").value;
+            var distance = 100;
+            var timeBefore = distance / speedBefore;
+            var timeAfter = distance / speedAfter;
+            var timeSaved = timeBefore - timeAfter;
+            var jam = Math.floor(timeSaved);
+            var minit = Math.round((timeSaved - jam) * 60);
+            document.getElementById("speedBeforeValue").textContent = speedBefore;
+            document.getElementById("speedAfterValue").textContent = speedAfter;
+            setFlipClockValue(jam, minit);
 
-        // Tambahkan kode untuk pembaruan waktu secara real-time
-        var currentTime = new Date();
-        currentTime.setHours(currentTime.getHours() + jam);
-        currentTime.setMinutes(currentTime.getMinutes() + minit);
+            // Tambahkan kode untuk pembaruan waktu secara real-time
+            var currentTime = new Date();
+            currentTime.setHours(currentTime.getHours() + jam);
+            currentTime.setMinutes(currentTime.getMinutes() + minit);
 
-        // Format waktu ke format hh:mm
-        var formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" + currentTime.getMinutes().toString().padStart(2, '0');
+            // Format waktu ke format hh:mm
+            var formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" + currentTime.getMinutes().toString().padStart(2, '0');
 
-        // Tampilkan waktu aktual
-        document.getElementById("timeSaved").textContent = formattedTime;
-    }
+            // Tampilkan waktu aktual
+            document.getElementById("timeSaved").textContent = formattedTime;
+        }
 
-    function setFlipClockValue(jam, minit) {
-        var flipClock = document.getElementById("flip-clock");
-        var flipClockCards = flipClock.querySelectorAll(".flip-clock-card");
-        setCardValue(flipClockCards[0], Math.floor(jam / 10));
-        setCardValue(flipClockCards[1], jam % 10);
-        setCardValue(flipClockCards[3], Math.floor(minit / 10));
-        setCardValue(flipClockCards[4], minit % 10);
-    }
+        function setFlipClockValue(jam, minit) {
+            var flipClock = document.getElementById("flip-clock");
+            var flipClockCards = flipClock.querySelectorAll(".flip-clock-card");
+            setCardValue(flipClockCards[0], Math.floor(jam / 10));
+            setCardValue(flipClockCards[1], jam % 10);
+            setCardValue(flipClockCards[3], Math.floor(minit / 10));
+            setCardValue(flipClockCards[4], minit % 10);
+        }
 
-    function setCardValue(card, value) {
-        card.textContent = value;
-    }
+        function setCardValue(card, value) {
+            card.textContent = value;
+        }
 
-    calculateTime();
-</script>
-
+        calculateTime();
+    </script>
 </body>
 </html>
