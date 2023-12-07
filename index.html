@@ -10,11 +10,11 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            background-color: #ffffff; /* Mengubah warna latar belakang menjadi putih */
+            background-color: #ffffff;
         }
         body {
             font-family: 'Montserrat', sans-serif;
-            color: #000000; /* Mengubah warna teks menjadi hitam */
+            color: #000000;
         }
         .container {
             display: flex;
@@ -27,7 +27,7 @@
             appearance: none;
             width: 80%;
             height: 15px;
-            background: #ccc; /* Mengubah warna latar slider menjadi abu-abu terang */
+            background: #ccc;
             outline: none;
             opacity: 0.7;
             -webkit-transition: .2s;
@@ -42,55 +42,61 @@
             appearance: none;
             width: 25px;
             height: 25px;
-            background: #007bff; /* Mengubah warna pegangan slider */
+            background: #007bff;
             cursor: pointer;
         }
         .slider::-moz-range-thumb {
             width: 25px;
             height: 25px;
-            background: #007bff; /* Mengubah warna pegangan slider */
+            background: #007bff;
             cursor: pointer;
         }
         h2 {
             font-size: 32px;
-            color: #000000; /* Mengubah warna judul menjadi hitam */
+            color: #000000;
             margin-bottom: 30px;
         }
         .center-text {
             text-align: center;
             width: 100%;
         }
-        .speed-display {
+        .box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             text-align: center;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>Laju Nak Pi Mana?</h2>
-        <label for="speedBefore">Kelajuan Sebelum:</label>
-        <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
-        <div class="speed-display">
-            <span id="speedBeforeValue">80</span> km/j
+        <div class="box">
+            <label for="speedBefore">Kelajuan Sebelum:</label>
+            <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
+            <div class="speed-display"><span id="speedBeforeValue">80</span> km/j</div>
         </div>
-        <br>
-        <label for="speedAfter">Kelajuan Selepas:</label>
-        <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
-        <div class="speed-display">
-            <span id="speedAfterValue">130</span> km/j
+        <div class="box">
+            <label for="speedAfter">Kelajuan Selepas:</label>
+            <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
+            <div class="speed-display"><span id="speedAfterValue">130</span> km/j</div>
         </div>
-        <br>
-        <div class="center-text">
-            <p>Masa yang kononnya berjaya dijimatkan:</p>
-            <p><span id="timeSaved"></span></p>
-            <p>Untuk setiap 100km perjalanan</p>
+        <div class="box">
+            <div class="center-text">
+                <p>Masa yang kononnya berjaya dijimatkan:</p>
+                <p><span id="timeSaved"></span></p>
+                <p>Untuk setiap 100km perjalanan</p>
+            </div>
         </div>
     </div>
     <script>
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
-            var distance = 100; 
+            var distance = 100;
             var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
             var timeSaved = timeBefore - timeAfter;
