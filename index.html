@@ -104,6 +104,10 @@
     </div>
     
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var safeAreaInsetTop = getComputedStyle(document.documentElement).getPropertyValue('--safe-area-inset-top');
+        document.body.style.paddingTop = safeAreaInsetTop;
+    });
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
@@ -122,6 +126,7 @@
         }
 
         calculateTime(); // Memanggil fungsi ini sekali untuk mengemaskini UI pada permulaan
+         
     </script>
 </body>
 </html>
