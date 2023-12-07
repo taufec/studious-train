@@ -4,7 +4,6 @@
     <title>Kalkulator Penjimatan Masa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
         html, body {
@@ -73,7 +72,6 @@
         /* Tambahkan CSS untuk gambar header */
         .header-image {
             width: 100%;
-            height: auto;
             max-width: 100%;
             height: auto;
         }
@@ -96,36 +94,26 @@
         <div class="box">
             <div class="center-text">
                 <p>Masa yang kononnya berjaya dijimatkan:</p>
-                <p><span id="timeSaved"></span></p> <!-- Menampilkan waktu aktual di sini -->
+                <p><span id="timeSaved"></span></p>
+                <p>Untuk setiap 100km perjalanan</p>
             </div>
         </div>
     </div>
- <script>
-    function calculateTime() {
-        var speedBefore = document.getElementById("speedBefore").value;
-        var speedAfter = document.getElementById("speedAfter").value;
-        var distance = 100;
-        var timeBefore = distance / speedBefore;
-        var timeAfter = distance / speedAfter;
-        var timeSaved = timeBefore - timeAfter;
-        var jam = Math.floor(timeSaved);
-        var minit = Math.round((timeSaved - jam) * 60);
-        document.getElementById("speedBeforeValue").textContent = speedBefore;
-        document.getElementById("speedAfterValue").textContent = speedAfter;
-        
-        // Tambahkan kode untuk pembaruan waktu secara real-time
-        var currentTime = new Date();
-        currentTime.setHours(currentTime.getHours() + jam);
-        currentTime.setMinutes(currentTime.getMinutes() + minit);
-
-        // Format waktu ke format hh:mm
-        var formattedTime = currentTime.getHours().toString().padStart(2, '0') + ":" + currentTime.getMinutes().toString().padStart(2, '0');
-
-        // Tampilkan waktu aktual
-        document.getElementById("timeSaved").textContent = formattedTime;
-    }
-
-    calculateTime();
-</script>
+    <script>
+        function calculateTime() {
+            var speedBefore = document.getElementById("speedBefore").value;
+            var speedAfter = document.getElementById("speedAfter").value;
+            var distance = 100;
+            var timeBefore = distance / speedBefore;
+            var timeAfter = distance / speedAfter;
+            var timeSaved = timeBefore - timeAfter;
+            var jam = Math.floor(timeSaved);
+            var minit = Math.round((timeSaved - jam) * 60);
+            document.getElementById("speedBeforeValue").textContent = speedBefore;
+            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+        }
+        calculateTime();
+    </script>
 </body>
 </html>
