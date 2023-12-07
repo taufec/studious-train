@@ -69,6 +69,55 @@
             text-align: center;
             width: 100%;
         }
+
+        /* Tambahkan CSS untuk flip clock */
+        .flip-clock {
+            display: inline-block;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .flip-clock-wrapper {
+            display: flex;
+        }
+
+        .flip-clock-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 5px;
+        }
+
+        .flip-clock-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40px;
+            height: 70px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-clock-top,
+        .flip-clock-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50%;
+        }
+
+        .flip-clock-card {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .flip-clock-divider {
+            font-size: 36px;
+            margin: 0 5px;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +136,31 @@
         <div class="box">
             <div class="center-text">
                 <p>Masa yang kononnya berjaya dijimatkan:</p>
-                <p><span id="timeSaved"></span></p>
+                <div id="flip-clock" class="flip-clock">
+                    <div class="flip-clock-wrapper">
+                        <div class="flip-clock-unit">
+                            <div class="flip-clock-inner">
+                                <div class="flip-clock-top">
+                                    <div class="flip-clock-card"></div>
+                                </div>
+                                <div class="flip-clock-bottom">
+                                    <div class="flip-clock-card"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-clock-divider">:</div>
+                        <div class="flip-clock-unit">
+                            <div class="flip-clock-inner">
+                                <div class="flip-clock-top">
+                                    <div class="flip-clock-card"></div>
+                                </div>
+                                <div class="flip-clock-bottom">
+                                    <div class="flip-clock-card"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <p>Untuk setiap 100km perjalanan</p>
             </div>
         </div>
@@ -104,8 +177,23 @@
             var minit = Math.round((timeSaved - jam) * 60);
             document.getElementById("speedBeforeValue").textContent = speedBefore;
             document.getElementById("speedAfterValue").textContent = speedAfter;
-            document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+            setFlipClockValue(jam, minit);
         }
+
+        function setFlipClockValue(jam, minit) {
+            var flipClock = document.getElementById("flip-clock");
+            var flipClockCards = flipClock.querySelectorAll(".flip-clock-card");
+            setCardValue(flipClockCards[0], Math.floor(jam / 10));
+            setCardValue(flipClockCards[1], jam % 10);
+            setCardValue(flipClockCards[3], Math.floor(minit / 10));
+            setCardValue(flipClockCards[4], minit % 10);
+        }
+
+        function setCardValue(card, value) {
+            card.dataset.value = value;
+            card.style.transform = `rotateX(${value * -36}deg)`;
+        }
+
         calculateTime();
     </script>
 </body>
