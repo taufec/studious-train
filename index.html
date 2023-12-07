@@ -71,7 +71,7 @@
         }
         /* Tambahkan CSS untuk gambar header */
         .header-image {
-            width: 50%;
+            width: 100%;
             max-width: 100%;
             height: auto;
         }
@@ -80,6 +80,15 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+        }
+
+        /* Atur ulang ukuran gambar header untuk layar seluler */
+        @media (max-width: 768px) {
+            .header-image {
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
         }
     </style>
 </head>
