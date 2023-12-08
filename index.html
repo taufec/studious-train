@@ -93,6 +93,7 @@
         /* Tambahkan CSS untuk angka kelajuan dan jarak perjalanan */
         .value {
             font-size: 18px;
+            margin-top: 5px; /* Added margin-top to separate values */
         }
     </style>
 </head>
@@ -145,7 +146,6 @@
             document.getElementById("distanceValue").textContent = distance + " km";
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
         }
-        calculateTime();
     </script>
 </body>
 </html>
