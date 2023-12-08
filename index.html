@@ -28,9 +28,9 @@
         .slider-container {
             width: 100%;
             display: flex;
-            flex-direction: row;
-            justify-content: start;
-            align-items: center;
+            flex-direction: row; /* Ubah dari column ke row */
+            justify-content: start; /* Letakkan elemen di permulaan container */
+            align-items: center; /* Menyelaraskan elemen di tengah secara vertikal */
             margin-bottom: 10px;
         }
         .slider {
@@ -82,16 +82,11 @@
         }
 
         /* Gaya untuk Label dan Nilai */
-        .label {
-            font-weight: bold;
-            margin-right: 10px; /* Tambah margin di sebelah kanan label */
-            display: flex;
-            align-items: center;
-        }
-        .value {
+        .label, .value {
             font-size: 18px;
             display: flex;
-            align-items: center;
+            align-items: center; /* Menyelaraskan teks di tengah secara vertikal */
+            margin-right: 10px; /* Tambah margin di sebelah kanan label */
         }
     </style>
 </head>
