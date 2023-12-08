@@ -89,24 +89,20 @@
             <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
             <div class="box">
                 <label class="label">Kelajuan Sebelum: <span id="speedBeforeValue">80</span>km/j</label>
-
                 <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
             </div>
             <div class="box">
-                <label for="speedAfter">Kelajuan Selepas:</label>
+                <label class="label">Kelajuan Selepas: <span id="speedAfterValue">130</span>km/j</label>
                 <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
-                <div class="speed-display"><span id="speedAfterValue">130</span> km/j</div>
             </div>
             <div class="box">
-                <label for="distance">Jarak Perjalanan:</label>
+                <label class="label">Jarak Perjalanan <span id="distanceValue">100</span>km</label>
                 <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
-                <div class="distance-display"><span id="distanceValue">100</span> km</div>
             </div>
             <div class="box">
                 <div class="center-text">
                     <p>Masa yang kononnya berjaya dijimatkan:</p>
                     <p><span id="timeSaved"></span></p>
-                    <p>Untuk setiap 100km perjalanan</p>
                 </div>
             </div>
         </div>
