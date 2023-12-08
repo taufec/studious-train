@@ -102,20 +102,16 @@
         <div class="column-container">
             <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
             <div class="box">
-                <label class="label">Kelajuan Sebelum: <span id="speedBeforeValue">80</span></label>
+                <label class="label">Kelajuan Sebelum: <span id="speedBeforeValue">80</span>km/j</label>
                 <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
             </div>
             <div class="box">
-                <label class="label">Kelajuan Selepas: <span id="speedAfterValue">130</span></label>
+                <label class="label">Kelajuan Selepas: <span id="speedAfterValue">130</span>km/j</label>
                 <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
             </div>
             <div class="box">
-                <label class="label">Jarak Perjalanan <span id="distanceValue">100</span></label>
+                <label class="label">Jarak Perjalanan <span id="distanceValue">100</span>km</label>
                 <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
-            </div>
-            <div class="box">
-                <label class="label">Risiko Kemalangan Yang Boleh Bawa Maut:</label>
-                    <span id="fatalityProbabilityAfter" class="fatality-probability"></span>
             </div>
             <div class="box">
                 <div class="center-text">
@@ -123,10 +119,10 @@
                     <p><span id="timeSaved"></span></p>
                 </div>
             </div>
-                <div class="center-text">
-                    <p>Penafian: Data kebarangkalian kemalangan maut yang ditunjukkan di laman ini adalah anggaran berdasarkan model statistik dan tidak harus dianggap sebagai ramalan pasti untuk setiap kejadian khusus. Faktor-faktor lain seperti keadaan jalan, cuaca, kondisi kenderaan, dan perilaku pemandu juga memainkan peranan penting dalam risiko kemalangan. Utamakan keselamatan dan selalu patuhi undang-undang lalu lintas. https://nacto.org/publication/city-limits/the-need/speed-kills/</p>
-                </div>
         </div>
+    </div>
+    <div class="box disclaimer">
+        <p><strong>Penafian:</strong> Data kebarangkalian kemalangan maut yang ditunjukkan di laman ini adalah anggaran berdasarkan model statistik dan tidak harus dianggap sebagai ramalan pasti untuk setiap kejadian khusus. Faktor-faktor lain seperti keadaan jalan, cuaca, kondisi kenderaan, dan perilaku pemandu juga memainkan peranan penting dalam risiko kemalangan. Utamakan keselamatan dan selalu patuhi undang-undang lalu lintas. <a href="https://nacto.org/publication/city-limits/the-need/speed-kills/" target="_blank">https://nacto.org/publication/city-limits/the-need/speed-kills/</a></p>
     </div>
     <script>
         function getProbability(speed) {
