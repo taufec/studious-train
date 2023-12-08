@@ -108,26 +108,39 @@
                 <div class="center-text">
                     <p>Masa yang kononnya berjaya dijimatkan:</p>
                     <p><span id="timeSaved"></span></p>
+                    <p>Kebarangkalian Kemalangan Maut: <span id="fatalityProbability">0%</span></p>
                 </div>
             </div>
         </div>
     </div>
-    <script>
+ <script>
+        function calculateProbability(speed) {
+            // Menggunakan model linear sederhana sebagai contoh
+            var probability = Math.min(99, 7.1 + (speed - 10) * 0.92);
+            return probability.toFixed(2) + '%';
+        }
+
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
-            var distance = document.getElementById("distance").value; // Mengambil nilai jarak dari slider jarak
+            var distance = document.getElementById("distance").value;
+
             var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
             var timeSaved = timeBefore - timeAfter;
             var jam = Math.floor(timeSaved);
             var minit = Math.round((timeSaved - jam) * 60);
+
             document.getElementById("speedBeforeValue").textContent = speedBefore;
             document.getElementById("speedAfterValue").textContent = speedAfter;
-            document.getElementById("distanceValue").textContent = distance; // Menampilkan jarak yang dipilih
+            document.getElementById("distanceValue").textContent = distance;
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+
+            // Mengupdate kebarangkalian kemalangan maut
+            document.getElementById("fatalityProbability").textContent = calculateProbability(speedBefore);
         }
-        calculateTime();
+
+        calculateTime(); // Memanggil fungsi saat halaman dimuat
     </script>
 </body>
 </html>
