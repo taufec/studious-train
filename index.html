@@ -98,6 +98,11 @@
                 <div class="speed-display"><span id="speedAfterValue">130</span> km/j</div>
             </div>
             <div class="box">
+                <label for="distance">Jarak Perjalanan:</label>
+                <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
+                <div class="distance-display"><span id="distanceValue">100</span> km</div>
+            </div>
+            <div class="box">
                 <div class="center-text">
                     <p>Masa yang kononnya berjaya dijimatkan:</p>
                     <p><span id="timeSaved"></span></p>
@@ -110,7 +115,7 @@
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
-            var distance = 100;
+            var distance = document.getElementById("distance").value; // Mengambil nilai jarak dari slider jarak
             var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
             var timeSaved = timeBefore - timeAfter;
@@ -118,6 +123,7 @@
             var minit = Math.round((timeSaved - jam) * 60);
             document.getElementById("speedBeforeValue").textContent = speedBefore;
             document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("distanceValue").textContent = distance; // Menampilkan jarak yang dipilih
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
         }
         calculateTime();
