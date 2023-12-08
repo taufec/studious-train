@@ -36,7 +36,8 @@
         .slider {
             -webkit-appearance: none;
             appearance: none;
-            width: 80%;
+            width: 70%; /* Diubah dari 80% untuk lebih banyak ruang */
+            margin-left: 10px; /* Menambah ruang antara label dan slider */
             background: #ccc;
             outline: none;
             opacity: 0.7;
@@ -83,10 +84,13 @@
 
         /* Gaya untuk Label dan Nilai */
         .label, .value {
+            font-weight: bold;
+            display: inline-block; /* Mengubah ke inline-block */
+            vertical-align: middle; /* Menyelaraskan di tengah secara vertikal */
+            margin-right: 5px; /* Penyesuaian margin */
+        }
+        .value {
             font-size: 18px;
-            display: flex;
-            align-items: center; /* Menyelaraskan teks di tengah secara vertikal */
-            margin-right: 10px; /* Tambah margin di sebelah kanan label */
         }
     </style>
 </head>
@@ -98,22 +102,22 @@
                 <div class="slider-container">
                     <label for="speedBefore" class="label">Kelajuan Sebelum:</label>
                     <span id="speedBeforeValue" class="value">80 km/j</span>
+                    <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
                 </div>
-                <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
             </div>
             <div class="box">
                 <div class="slider-container">
                     <label for="speedAfter" class="label">Kelajuan Selepas:</label>
                     <span id="speedAfterValue" class="value">130 km/j</span>
+                    <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
                 </div>
-                <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
             </div>
             <div class="box">
                 <div class="slider-container">
                     <label for="distance" class="label">Jarak Perjalanan:</label>
                     <span id="distanceValue" class="value">100 km</span>
+                    <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
                 </div>
-                <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
             </div>
             <div class="box">
                 <div class="center-text">
