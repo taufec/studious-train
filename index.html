@@ -6,7 +6,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-        /* Gaya Umum */
         html, body {
             height: 100%;
             margin: 0;
@@ -23,26 +22,17 @@
             align-items: center;
             padding: 40px;
         }
-
-        /* Gaya untuk Slider */
-        .slider-container {
-            width: 100%;
-            display: flex;
-            flex-direction: row; /* Ubah dari column ke row */
-            justify-content: start; /* Letakkan elemen di permulaan container */
-            align-items: center; /* Menyelaraskan elemen di tengah secara vertikal */
-            margin-bottom: 10px;
-        }
         .slider {
             -webkit-appearance: none;
             appearance: none;
-            width: 70%; /* Diubah dari 80% untuk lebih banyak ruang */
-            margin-left: 10px; /* Menambah ruang antara label dan slider */
+            width: 80%;
+            height: 15px;
             background: #ccc;
             outline: none;
             opacity: 0.7;
             -webkit-transition: .2s;
             transition: opacity .2s;
+            margin: 10px 0;
         }
         .slider:hover {
             opacity: 1;
@@ -61,8 +51,6 @@
             background: #007bff;
             cursor: pointer;
         }
-
-        /* Gaya untuk Header dan Kotak */
         h2 {
             font-size: 32px;
             color: #000000;
@@ -81,16 +69,17 @@
             text-align: center;
             width: 100%;
         }
-
-        /* Gaya untuk Label dan Nilai */
-        .label, .value {
-            font-weight: bold;
-            display: inline-block; /* Mengubah ke inline-block */
-            vertical-align: middle; /* Menyelaraskan di tengah secara vertikal */
-            margin-right: 5px; /* Penyesuaian margin */
+        /* Tambahkan CSS untuk tata letak kolom */
+        .column-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .value {
-            font-size: 18px;
+        /* Tambahkan CSS untuk gambar header */
+        .header-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -99,25 +88,19 @@
         <div class="column-container">
             <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
             <div class="box">
-                <div class="slider-container">
-                    <label for="speedBefore" class="label">Kelajuan Sebelum:</label>
-                    <span id="speedBeforeValue" class="value">80 km/j</span>
-                    <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
-                </div>
+                <label for="speedBefore">Kelajuan Sebelum:</label>
+                <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
+                <div class="speed-display"><span id="speedBeforeValue">80</span> km/j</div>
             </div>
             <div class="box">
-                <div class="slider-container">
-                    <label for="speedAfter" class="label">Kelajuan Selepas:</label>
-                    <span id="speedAfterValue" class="value">130 km/j</span>
-                    <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
-                </div>
+                <label for="speedAfter">Kelajuan Selepas:</label>
+                <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
+                <div class="speed-display"><span id="speedAfterValue">130</span> km/j</div>
             </div>
             <div class="box">
-                <div class="slider-container">
-                    <label for="distance" class="label">Jarak Perjalanan:</label>
-                    <span id="distanceValue" class="value">100 km</span>
-                    <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
-                </div>
+                <label for="distance">Jarak Perjalanan:</label>
+                <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
+                <div class="distance-display"><span id="distanceValue">100</span> km</div>
             </div>
             <div class="box">
                 <div class="center-text">
@@ -132,17 +115,18 @@
         function calculateTime() {
             var speedBefore = document.getElementById("speedBefore").value;
             var speedAfter = document.getElementById("speedAfter").value;
-            var distance = document.getElementById("distance").value;
+            var distance = document.getElementById("distance").value; // Mengambil nilai jarak dari slider jarak
             var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
             var timeSaved = timeBefore - timeAfter;
             var jam = Math.floor(timeSaved);
             var minit = Math.round((timeSaved - jam) * 60);
-            document.getElementById("speedBeforeValue").textContent = speedBefore + " km/j";
-            document.getElementById("speedAfterValue").textContent = speedAfter + " km/j";
-            document.getElementById("distanceValue").textContent = distance + " km";
+            document.getElementById("speedBeforeValue").textContent = speedBefore;
+            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("distanceValue").textContent = distance; // Menampilkan jarak yang dipilih
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
         }
+        calculateTime();
     </script>
 </body>
 </html>
