@@ -116,13 +116,12 @@
  <script>
         function calculateProbability(speed) {
             // Logika pengiraan kebarangkalian berdasarkan kelajuan
-            // Contoh menggunakan model linear sederhana
             var probability = Math.min(99, 7.1 + (speed - 10) * 0.92);
             return probability;
         }
 
         function calculateIncrease(probBefore, probAfter) {
-            if (probBefore === 0) return 'N/A';
+            if (probBefore === 0) return 'N/A'; // Elakkan pembahagian dengan sifar
             return ((probAfter - probBefore) / probBefore * 100).toFixed(2) + '%';
         }
 
@@ -145,8 +144,6 @@
             document.getElementById("speedAfterValue").textContent = speedAfter;
             document.getElementById("distanceValue").textContent = distance;
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
-            document.getElementById("fatalityProbabilityBefore").textContent = probBefore.toFixed(2) + '%';
-            document.getElementById("fatalityProbabilityAfter").textContent = probAfter.toFixed(2) + '%';
             document.getElementById("increaseProbability").textContent = increase;
         }
 
