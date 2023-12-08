@@ -102,4 +102,50 @@
             <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
             <div class="box">
                 <div class="slider-container">
-                    <label for="speedBefore
+                    <label for="speedBefore" class="label">Kelajuan Sebelum:</label>
+                    <span id="speedBeforeValue" class="value">80 km/j</span>
+                </div>
+                <input type="range" id="speedBefore" class="slider" min="10" max="200" value="80" oninput="calculateTime()">
+            </div>
+            <div class="box">
+                <div class="slider-container">
+                    <label for="speedAfter" class="label">Kelajuan Selepas:</label>
+                    <span id="speedAfterValue" class="value">130 km/j</span>
+                </div>
+                <input type="range" id="speedAfter" class="slider" min="10" max="200" value="130" oninput="calculateTime()">
+            </div>
+            <div class="box">
+                <div class="slider-container">
+                    <label for="distance" class="label">Jarak Perjalanan:</label>
+                    <span id="distanceValue" class="value">100 km</span>
+                </div>
+                <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
+            </div>
+            <div class="box">
+                <div class="center-text">
+                    <p>Masa yang kononnya berjaya dijimatkan:</p>
+                    <p><span id="timeSaved"></span></p>
+                    <p>Untuk setiap 100km perjalanan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateTime() {
+            var speedBefore = document.getElementById("speedBefore").value;
+            var speedAfter = document.getElementById("speedAfter").value;
+            var distance = document.getElementById("distance").value; // Mengambil nilai jarak dari slider jarak
+            var timeBefore = distance / speedBefore;
+            var timeAfter = distance / speedAfter;
+            var timeSaved = timeBefore - timeAfter;
+            var jam = Math.floor(timeSaved);
+            var minit = Math.round((timeSaved - jam) * 60);
+            document.getElementById("speedBeforeValue").textContent = speedBefore + " km/j";
+            document.getElementById("speedAfterValue").textContent = speedAfter + " km/j";
+            document.getElementById("distanceValue").textContent = distance + " km";
+            document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+        }
+        calculateTime();
+    </script>
+</body>
+</html>
