@@ -113,41 +113,48 @@
             </div>
         </div>
     </div>
- <script>
-        function calculateProbability(speed) {
-            // Logika pengiraan kebarangkalian berdasarkan kelajuan
-            var probability = Math.min(99, 7.1 + (speed - 10) * 0.92);
-            return probability;
-        }
+<script>
+    function calculateProbability(speed) {
+        // Logika pengiraan kebarangkalian berdasarkan kelajuan
+        var probability = Math.min(99, 7.1 + (speed - 10) * 0.92);
+        return probability;
+    }
 
-        function calculateIncrease(probBefore, probAfter) {
-            if (probBefore === 0) return 'N/A'; // Elakkan pembahagian dengan sifar
-            return ((probAfter - probBefore) / probBefore * 100).toFixed(2) + '%';
-        }
+    function calculateIncrease(probBefore, probAfter) {
+        if (probBefore === 0) return 'N/A'; // Elakkan pembahagian dengan sifar
+        var increase = ((probAfter - probBefore) / probBefore) * 100;
+        return increase.toFixed(2) + '%'; // Kembalikan string dengan dua desimal
+    }
 
-        function calculateTime() {
-            var speedBefore = document.getElementById("speedBefore").value;
-            var speedAfter = document.getElementById("speedAfter").value;
-            var distance = document.getElementById("distance").value;
+    function calculateTime() {
+        var speedBefore = parseInt(document.getElementById("speedBefore").value);
+        var speedAfter = parseInt(document.getElementById("speedAfter").value);
+        var distance = parseInt(document.getElementById("distance").value);
 
-            var timeBefore = distance / speedBefore;
-            var timeAfter = distance / speedAfter;
-            var timeSaved = timeBefore - timeAfter;
-            var jam = Math.floor(timeSaved);
-            var minit = Math.round((timeSaved - jam) * 60);
+        var timeBefore = distance / speedBefore;
+        var timeAfter = distance / speedAfter;
+        var timeSaved = timeBefore - timeAfter;
+        var jam = Math.floor(timeSaved);
+        var minit = Math.round((timeSaved - jam) * 60);
 
-            var probBefore = calculateProbability(speedBefore);
-            var probAfter = calculateProbability(speedAfter);
-            var increase = calculateIncrease(probBefore, probAfter);
+        var probBefore = calculateProbability(speedBefore);
+        var probAfter = calculateProbability(speedAfter);
+        var increase = calculateIncrease(probBefore, probAfter);
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
-            document.getElementById("distanceValue").textContent = distance;
-            document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
-            document.getElementById("increaseProbability").textContent = increase;
-        }
+        document.getElementById("speedBeforeValue").textContent = speedBefore + ' km/j';
+        document.getElementById("speedAfterValue").textContent = speedAfter + ' km/j';
+        document.getElementById("distanceValue").textContent = distance + ' km';
+        document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
+        document.getElementById("increaseProbability").textContent = increase;
+    }
 
-        calculateTime(); // Memanggil fungsi saat halaman dimuat
-    </script>
+    // Event listener untuk slider
+    document.getElementById("speedBefore").addEventListener("input", calculateTime);
+    document.getElementById("speedAfter").addEventListener("input", calculateTime);
+    document.getElementById("distance").addEventListener("input", calculateTime);
+
+    calculateTime(); // Memanggil fungsi saat halaman dimuat
+</script>
+
 </body>
 </html>
