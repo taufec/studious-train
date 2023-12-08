@@ -106,9 +106,6 @@
             </div>
             <div class="box">
                 <label class="label">Risiko Kemalangan Yang Boleh Bawa Maut: <span id="fatalityProbabilityAfter"></span></label>
-                <div class="center-text">
-                <p>Risiko Kemalangan Yang Boleh Bawa Maut: <span id="fatalityProbabilityAfter">%</span></p>
-                </div>
             </div>
             <div class="box">
                 <div class="center-text">
@@ -151,8 +148,8 @@
 
             var probAfter = getProbability(speedAfter);
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore + ' km/j';
-            document.getElementById("speedAfterValue").textContent = speedAfter + ' km/j';
+            document.getElementById("speedBeforeValue").textContent = speedBefore;
+            document.getElementById("speedAfterValue").textContent = speedAfter;
             document.getElementById("distanceValue").textContent = distance + ' km';
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
             document.getElementById("fatalityProbabilityAfter").textContent = probAfter + '%';
