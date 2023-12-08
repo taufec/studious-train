@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        /* Gaya Umum */
         html, body {
             height: 100%;
             margin: 0;
@@ -22,10 +23,13 @@
             align-items: center;
             padding: 40px;
         }
+
+        /* Gaya untuk Slider */
         .slider-container {
             width: 100%;
             display: flex;
-            justify-content: space-between;
+            flex-direction: row; /* Ubah dari column ke row */
+            justify-content: start; /* Letakkan elemen di permulaan container */
             align-items: center;
             margin-bottom: 10px;
         }
@@ -56,6 +60,8 @@
             background: #007bff;
             cursor: pointer;
         }
+
+        /* Gaya untuk Header dan Kotak */
         h2 {
             font-size: 32px;
             color: #000000;
@@ -74,26 +80,14 @@
             text-align: center;
             width: 100%;
         }
-        /* Tambahkan CSS untuk tata letak kolom */
-        .column-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        /* Tambahkan CSS untuk gambar header */
-        .header-image {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-        }
-        /* Tambahkan CSS untuk label */
+
+        /* Gaya untuk Label dan Nilai */
         .label {
             font-weight: bold;
+            margin-right: 10px; /* Tambah margin di sebelah kanan label */
         }
-        /* Tambahkan CSS untuk angka kelajuan dan jarak perjalanan */
         .value {
-            font-size: 18px;
-            margin-top: 5px; /* Added margin-top to separate values */
+            font-size: 18px; /* Sesuaikan jika perlu */
         }
     </style>
 </head>
