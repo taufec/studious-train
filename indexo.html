@@ -6,8 +6,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap'); /* Impor Montserrat Black 900 */
-
         html, body {
             height: 100%;
             margin: 0;
@@ -88,15 +86,6 @@
     display: block; /* Atau style yang Anda gunakan saat ini */
     margin-bottom: 10px; /* Tambahkan jarak di bawah label */
 }
-        .fatality-probability {
-            font-size: 20px; /* Ukuran font lebih besar */
-            color: red; /* Warna teks merah */
-            font-family: 'Montserrat', sans-serif; /* Gunakan Montserrat */
-            font-weight: 900; /* Berat font Black 900 */
-            font-style: italic; /* Gaya font italic */
-        }
-
-
     </style>
 </head>
 <body>
@@ -116,64 +105,39 @@
                 <input type="range" id="distance" class="slider" min="10" max="200" value="100" oninput="calculateTime()">
             </div>
             <div class="box">
-                <label class="label">Risiko Kemalangan Yang Boleh Bawa Maut:</label>
-                    <span id="fatalityProbabilityAfter" class="fatality-probability"></span>
-                    <p>Peratusan risiko dikira berdasarkan model data statistik daripada <a href="https://nacto.org/publication/city-limits/the-need/speed-kills/">NACTO</a></p>
-
-            </div>
-            <div class="box">
-                    <label class="label">Masa yang kononnya berjaya dijimatkan:</label>
+                <div class="center-text">
+                    <p>Masa yang kononnya berjaya dijimatkan:</p>
                     <p><span id="timeSaved"></span></p>
+                    <p>Risiko Risiko Kemalangan Yang Boleh Membawa Maut: <span id="fatalityProbabilityAfter">%</span></p>
                 </div>
-        
             </div>
         </div>
     </div>
-   
     <script>
-        function getProbability(speed) {
-            // Menggunakan data yang diberikan untuk mengira kebarangkalian
-            if (speed >= 200) return 99;
-            else if (speed >= 140) return 99;
-            else if (speed >= 130) return 94.5;
-            else if (speed >= 120) return 89.8;
-            else if (speed >= 110) return 85.1;
-            else if (speed >= 100) return 80.4;
-            else if (speed >= 90) return 75.7;
-            else if (speed >= 80) return 47.6;
-            else if (speed >= 70) return 38.9;
-            else if (speed >= 60) return 30.2;
-            else if (speed >= 50) return 21.5;
-            else if (speed >= 40) return 13.3;
-            else if (speed >= 30) return 11.2;
-            else if (speed >= 20) return 9.1;
-            else return 7.1; // Jika kelajuan kurang dari atau sama dengan 20
+        function calculateProbability(speed) {
+            // Logika pengiraan kebarangkalian berdasarkan kelajuan
+            var probability = Math.min(99, 7.1 + (speed - 10) * 0.92);
+            return probability.toFixed(2) + '%';
         }
 
         function calculateTime() {
-            var speedBefore = parseInt(document.getElementById("speedBefore").value);
             var speedAfter = parseInt(document.getElementById("speedAfter").value);
             var distance = parseInt(document.getElementById("distance").value);
 
-            var timeBefore = distance / speedBefore;
             var timeAfter = distance / speedAfter;
-            var timeSaved = timeBefore - timeAfter;
-            var jam = Math.floor(timeSaved);
-            var minit = Math.round((timeSaved - jam) * 60);
+            var jam = Math.floor(timeAfter);
+            var minit = Math.round((timeAfter - jam) * 60);
 
-            var probAfter = getProbability(speedAfter);
+            var probAfter = calculateProbability(speedAfter);
 
-            document.getElementById("speedBeforeValue").textContent = speedBefore;
-            document.getElementById("speedAfterValue").textContent = speedAfter;
+            document.getElementById("speedAfterValue").textContent = speedAfter + ' km/j';
             document.getElementById("distanceValue").textContent = distance + ' km';
             document.getElementById("timeSaved").textContent = jam + " jam " + minit + " minit";
-            document.getElementById("fatalityProbabilityAfter").textContent = probAfter + '%';
+            document.getElementById("fatalityProbabilityAfter").textContent = probAfter;
         }
 
-        // Menambahkan event listener untuk slider
-        document.getElementById("speedBefore").addEventListener("input", calculateTime);
+        // Event listener untuk slider kelajuan selepas
         document.getElementById("speedAfter").addEventListener("input", calculateTime);
-        document.getElementById("distance").addEventListener("input", calculateTime);
 
         calculateTime(); // Memanggil fungsi saat halaman dimuat
     </script>
