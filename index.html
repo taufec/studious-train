@@ -95,6 +95,17 @@
             font-weight: 900; /* Berat font Black 900 */
             font-style: italic; /* Gaya font italic */
         }
+        .iframe-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Pastikan ia berada di atas elemen lain */
+}
 
 
     </style>
@@ -128,6 +139,14 @@
         
             </div>
         </div>
+    <!-- Butang untuk membuka popup -->
+    <button onclick="toggleIframePopup()">Buka Iframe</button>
+
+    <!-- Popup Iframe -->
+    <div id="iframePopup" style="display:none;" class="iframe-popup">
+        <iframe class="airtable-embed" src="https://airtable.com/embed/appWWJNPP0WT89Dp7/shrArN1hmt7S8P2tj?backgroundColor=purple" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+        <button onclick="toggleIframePopup()">Tutup</button>
+    </div>
     </div>
    
     <script>
@@ -176,6 +195,15 @@
         document.getElementById("distance").addEventListener("input", calculateTime);
 
         calculateTime(); // Memanggil fungsi saat halaman dimuat
+        // Fungsi untuk memaparkan dan menyembunyikan iframe popup
+        function toggleIframePopup() {
+            var iframePopup = document.getElementById('iframePopup');
+            if (iframePopup.style.display === 'none') {
+                iframePopup.style.display = 'block';
+            } else {
+                iframePopup.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
