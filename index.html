@@ -75,9 +75,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 60%;
         }
         .header-image {
-            width: 100%;
+            width: 80%;
             max-width: 100%;
             height: auto;
         }
@@ -105,15 +106,20 @@
             z-index: 1000;
         }
         #feedbackButton {
-    display: block; /* Butang sebagai blok */
-    margin: 30px auto; /* Tengah secara horizontal dengan margin atas dan bawah */
-    padding: 10px 20px; /* Padding untuk butang */
-    background-color: #C0C0C0; /* Warna latar belakang butang */
-    color: white; /* Warna teks */
-    border: none; /* Tiada border */
-    border-radius: 5px; /* Radius border untuk kelihatan bulat */
-    cursor: pointer; /* Tukar kursor kepada pointer */
-}
+            display: block; /* Butang sebagai blok */
+            margin: 30px auto; /* Tengah secara horizontal dengan margin atas dan bawah */
+            padding: 10px 20px; /* Padding untuk butang */
+            background-color: #C0C0C0; /* Warna latar belakang butang */
+            color: white; /* Warna teks */
+            border: none; /* Tiada border */
+            border-radius: 5px; /* Radius border untuk kelihatan bulat */
+            cursor: pointer; /* Tukar kursor kepada pointer */
+        }
+         @media (max-width: 600px) {
+            .column-container {
+                width: 100%;
+                margin: 0 auto;
+        }
 
     </style>
 </head>
@@ -121,6 +127,7 @@
     <div class="container">
         <div class="column-container">
             <img src="https://raw.githubusercontent.com/taufec/studious-train/1fc0d8098c496884d32f57f163fedaa9a316a6a9/Unknown.png" class="header-image" alt="Header Image">
+            <p style="text-align:center">Kira masa yang dapat dijimatkan dengan drive lebih laju &amp; risiko lain yang datang bersama kelajuan.</p>
             <div class="box">
                 <label class="label">Kelajuan Sebelum: <span id="speedBeforeValue">80</span>km/j</label>
                 <input type="range" id="speedBefore" class="slider" min="10" max="200" value="70" oninput="calculateTime()">
