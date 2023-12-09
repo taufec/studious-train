@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap'); /* Impor Montserrat Black 900 */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap');
 
         html, body {
             height: 100%;
@@ -71,31 +71,49 @@
             text-align: center;
             width: 100%;
         }
-        /* Tambahkan CSS untuk tata letak kolom */
         .column-container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        /* Tambahkan CSS untuk gambar header */
         .header-image {
             width: 100%;
             max-width: 100%;
             height: auto;
         }
         .label {
-    font-weight: bold;
-    display: block; /* Atau style yang Anda gunakan saat ini */
-    margin-bottom: 10px; /* Tambahkan jarak di bawah label */
-}
-        .fatality-probability {
-            font-size: 20px; /* Ukuran font lebih besar */
-            color: red; /* Warna teks merah */
-            font-family: 'Montserrat', sans-serif; /* Gunakan Montserrat */
-            font-weight: 900; /* Berat font Black 900 */
-            font-style: italic; /* Gaya font italic */
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
         }
-
+        .fatality-probability {
+            font-size: 20px;
+            color: red;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-style: italic;
+        }
+        .iframe-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        #feedbackButton {
+    display: block; /* Butang sebagai blok */
+    margin: 30px auto; /* Tengah secara horizontal dengan margin atas dan bawah */
+    padding: 10px 20px; /* Padding untuk butang */
+    background-color: #C0C0C0; /* Warna latar belakang butang */
+    color: white; /* Warna teks */
+    border: none; /* Tiada border */
+    border-radius: 5px; /* Radius border untuk kelihatan bulat */
+    cursor: pointer; /* Tukar kursor kepada pointer */
+}
 
     </style>
 </head>
@@ -119,17 +137,21 @@
                 <label class="label">Risiko Kemalangan Yang Boleh Bawa Maut:</label>
                     <span id="fatalityProbabilityAfter" class="fatality-probability"></span>
                     <p>Peratusan risiko dikira berdasarkan model data statistik daripada <a href="https://nacto.org/publication/city-limits/the-need/speed-kills/">NACTO</a></p>
-
             </div>
             <div class="box">
-                    <label class="label">Masa yang kononnya berjaya dijimatkan:</label>
-                    <p><span id="timeSaved"></span></p>
-                </div>
-        
+                <label class="label">Masa yang kononnya berjaya dijimatkan:</label>
+                <p><span id="timeSaved"></span></p>
             </div>
         </div>
+            <button id="feedbackButton" onclick="toggleIframePopup()">Feedback/Cadangan</button>
+
     </div>
-   
+    
+    <!-- Popup Iframe -->
+    <div id="iframePopup" style="display:none;" class="iframe-popup">
+        <iframe class="airtable-embed" src="https://airtable.com/embed/appWWJNPP0WT89Dp7/shrArN1hmt7S8P2tj?backgroundColor=purple" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+        <button onclick="toggleIframePopup()">Tutup</button>
+    </div>
     <script>
         function getProbability(speed) {
             // Menggunakan data yang diberikan untuk mengira kebarangkalian
@@ -176,6 +198,15 @@
         document.getElementById("distance").addEventListener("input", calculateTime);
 
         calculateTime(); // Memanggil fungsi saat halaman dimuat
+        // Fungsi untuk memaparkan dan menyembunyikan iframe popup
+        function toggleIframePopup() {
+            var iframePopup = document.getElementById('iframePopup');
+            if (iframePopup.style.display === 'none') {
+                iframePopup.style.display = 'block';
+            } else {
+                iframePopup.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
